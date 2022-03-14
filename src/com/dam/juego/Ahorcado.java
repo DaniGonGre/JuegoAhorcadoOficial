@@ -1,7 +1,5 @@
 package com.dam.juego;
-
 import javax.swing.*;
-
 import static com.dam.juego.MetodosAhorcado.*;
 
 public class Ahorcado {
@@ -10,7 +8,6 @@ public class Ahorcado {
             int op;
 
         try {
-
                 op = Integer.parseInt(JOptionPane.showInputDialog("      "
                         + "     **** MENU ****"
                         + "\n1 --> Empezar partida" + "\n2 --> Elegir dificultad" + "\n3 --> Salir"));
