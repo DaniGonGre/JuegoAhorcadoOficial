@@ -95,7 +95,7 @@ public class MetodosAhorcado {
         Random rand = new Random();
         String palabraJuego = palabras.get(rand.nextInt(palabras.size()));
 
-          System.out.println(palabraJuego);
+        //  System.out.println(palabraJuego);
         List<Character> jugadores = new ArrayList<>();
 
         System.out.println();
