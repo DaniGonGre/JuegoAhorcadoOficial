@@ -1,6 +1,7 @@
 package com.dam.juego;
 import javax.swing.*;
 import static com.dam.juego.MetodosAhorcado.*;
+import libreriaDani.lerDatos;
 
 public class Ahorcado {
 
@@ -8,7 +9,7 @@ public class Ahorcado {
         int op;
 
         try {
-            op = Integer.parseInt(JOptionPane.showInputDialog("      "
+            op = Integer.parseInt(lerDatos.lerString("      "
                     + "     **** MENU ****"
                     + "\n1 --> Empezar partida" + "\n2 --> Elegir dificultad" + "\n3 --> Salir"));
             switch (op) {
@@ -30,7 +31,7 @@ public class Ahorcado {
 
         try {
 
-            op = Integer.parseInt(JOptionPane.showInputDialog("      " + "  **** DIFICULTAD ****"
+            op = Integer.parseInt(lerDatos.lerString("      " + "  **** DIFICULTAD ****"
                     + "\n1 --> Fácil: 5 intentos" + "\n2 --> Media: 3 intentos" + "\n3 --> Imposible: 1 intentos"));
 
             switch (op) {
@@ -49,5 +50,4 @@ public class Ahorcado {
             JOptionPane.showMessageDialog(null, "El valor ingresado no es un número.");
         }
     }
-
 }
