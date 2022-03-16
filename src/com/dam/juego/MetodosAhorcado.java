@@ -8,6 +8,8 @@ import javax.swing.*;
 import static javax.swing.JOptionPane.QUESTION_MESSAGE;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
 
+import libreriaDani.lerDatos;
+
 public class MetodosAhorcado {
 
     public static void partida() {
@@ -50,19 +52,19 @@ public class MetodosAhorcado {
 
         switch (op) {
             case 0 :
-            String palabra = JOptionPane.showInputDialog("Introduce la palabra: ");
-            if (palabraJuego.equals(palabra)) {
-                JOptionPane.showMessageDialog(null, "Has acertado la palabra.");
-                break;
-            } else
-                JOptionPane.showMessageDialog(null, "La palabra no es correcta.");
+                String palabra = lerDatos.lerString("Introduce la palabra: ");
+                if (palabraJuego.equals(palabra)) {
+                    JOptionPane.showMessageDialog(null, "Has acertado la palabra.");
+                    break;
+                } else
+                    JOptionPane.showMessageDialog(null, "La palabra no es correcta.");
             case 1 :
         }
 
     }
     public static boolean jugando(String palabraJuego, List<Character> jugadores) {
 
-        String letra = JOptionPane.showInputDialog("Introduce unha letra: ");
+        String letra = lerDatos.lerString("Introduce unha letra: ");
         jugadores.add(letra.charAt(0));
 
         return palabraJuego.contains(letra);
@@ -115,9 +117,9 @@ public class MetodosAhorcado {
             }
 
             if (verPalabras(palabraJuego, jugadores)) {
-    //            ImageIcon icono = new ImageIcon(Ahorcado.class.getResource("ahorcado.gif"));
+                //            ImageIcon icono = new ImageIcon(Ahorcado.class.getResource("ahorcado.gif"));
                 JOptionPane.showMessageDialog(null, "Has acertado la palabra.");
-    //            JOptionPane.showMessageDialog(null, icono, "Has acertado la palabra.", JOptionPane.INFORMATION_MESSAGE);
+                //            JOptionPane.showMessageDialog(null, icono, "Has acertado la palabra.", JOptionPane.INFORMATION_MESSAGE);
             }
 
         }
@@ -156,6 +158,5 @@ public class MetodosAhorcado {
             }
 
         }
-    }
+    }   
 }
-
