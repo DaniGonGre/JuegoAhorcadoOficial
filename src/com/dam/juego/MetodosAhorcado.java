@@ -52,13 +52,16 @@ public class MetodosAhorcado {
 
         switch (op) {
             case 0 :
-                String palabra = lerDatos.lerString("Introduce la palabra: ");
-                if (palabraJuego.equals(palabra)) {
-                    JOptionPane.showMessageDialog(null, "Has acertado la palabra.");
-                    break;
-                } else
-                    JOptionPane.showMessageDialog(null, "La palabra no es correcta.");
+            String palabra = lerDatos.lerString("Introduce la palabra: ");
+            if (palabraJuego.equals(palabra)) {
+                JOptionPane.showMessageDialog(null, "Has acertado la palabra.");
+
+                MetodosAhorcado.repetir();
+            } else
+                JOptionPane.showMessageDialog(null, "La palabra no es correcta.");
             case 1 :
+                break;
+
         }
 
     }
@@ -97,7 +100,7 @@ public class MetodosAhorcado {
         Random rand = new Random();
         String palabraJuego = palabras.get(rand.nextInt(palabras.size()));
 
-        //  System.out.println(palabraJuego);
+          System.out.println(palabraJuego);
         List<Character> jugadores = new ArrayList<>();
 
         System.out.println();
@@ -107,20 +110,23 @@ public class MetodosAhorcado {
         while (true) {
             if (intentos >= 1) {
                 JOptionPane.showMessageDialog(null, "Has acabado todos tus intentos.");
-                break;
+                MetodosAhorcado.repetir();
+
             }
 
             if (!jugando(palabraJuego, jugadores)) {
                 intentos++;
-                JOptionPane.showMessageDialog(null, "Esta letra no está en la palabra. Te quedan " + (2 - intentos) + " intentos");
+                JOptionPane.showMessageDialog(null, "Esta letra no está en la palabra. Te quedan " + (1 - intentos) + " intentos");
+                MetodosAhorcado.repetir();
+                break;
 
             }
 
             if (verPalabras(palabraJuego, jugadores)) {
-                //            ImageIcon icono = new ImageIcon(Ahorcado.class.getResource("ahorcado.gif"));
                 JOptionPane.showMessageDialog(null, "Has acertado la palabra.");
-                //            JOptionPane.showMessageDialog(null, icono, "Has acertado la palabra.", JOptionPane.INFORMATION_MESSAGE);
-            }
+            } else
+                MetodosAhorcado.averiguar(palabraJuego, jugadores);
+
 
         }
     }
@@ -142,8 +148,9 @@ public class MetodosAhorcado {
         int intentos = 0;
 
         while (true) {
-            if (intentos >= 4) {
+            if (intentos >= 3) {
                 JOptionPane.showMessageDialog(null, "Has acabado todos tus intentos.");
+                MetodosAhorcado.repetir();
                 break;
             }
 
@@ -155,8 +162,57 @@ public class MetodosAhorcado {
 
             if (verPalabras(palabraJuego, jugadores)) {
                 JOptionPane.showMessageDialog(null, "Has acertado la palabra.");
-            }
+            } else
+            MetodosAhorcado.averiguar(palabraJuego, jugadores);
 
         }
-    }   
-}
+    }
+    public static void repetir() {
+        int op=0;
+        try {
+            op = Integer.parseInt(JOptionPane.showInputDialog("      "
+                    + "     **** MENU ****"
+                    + "\n1 --> Empezar partida" + "\n2 --> Elegir dificultad" + "\n3 --> Salir"));
+            switch (op) {
+                case 1:
+                       MetodosAhorcado.partida();
+                    break;
+                case 2:
+                    elegirDificultad();
+            }
+            while (op != 3);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "El valor ingresado no es un número.");
+        }
+    }
+
+    public static void elegirDificultad(){
+
+        int op;
+
+        try {
+
+            op = Integer.parseInt(JOptionPane.showInputDialog("      " + "  **** DIFICULTAD ****"
+                    + "\n1 --> Fácil: 5 intentos" + "\n2 --> Media: 3 intentos" + "\n3 --> Imposible: 1 intentos"));
+
+            switch (op) {
+                case 1:
+                    partida();
+                    break;
+                case 2:
+                    partidaMedia();
+                    break;
+                case 3:
+                    partidaDificil();
+                    break;
+            }
+            while (op != 4);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "El valor ingresado no es un número.");
+        }
+    }
+
+
+
+
+    }
