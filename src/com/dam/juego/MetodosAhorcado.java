@@ -8,8 +8,6 @@ import javax.swing.*;
 import static javax.swing.JOptionPane.QUESTION_MESSAGE;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
 
-import libreriaDani.lerDatos;
-
 public class MetodosAhorcado {
 
     public static void partida() {
@@ -52,7 +50,7 @@ public class MetodosAhorcado {
 
         switch (op) {
             case 0 :
-                String palabra = lerDatos.lerString("Introduce la palabra: ");
+                String palabra = JOptionPane.showInputDialog("Introduce la palabra: ");
                 if (palabraJuego.equals(palabra)) {
                     JOptionPane.showMessageDialog(null, "Has acertado la palabra.");
                     break;
@@ -64,7 +62,7 @@ public class MetodosAhorcado {
     }
     public static boolean jugando(String palabraJuego, List<Character> jugadores) {
 
-        String letra = lerDatos.lerString("Introduce unha letra: ");
+        String letra = JOptionPane.showInputDialog("Introduce unha letra: ");
         jugadores.add(letra.charAt(0));
 
         return palabraJuego.contains(letra);
@@ -158,5 +156,5 @@ public class MetodosAhorcado {
             }
 
         }
-    }   
+    }
 }
