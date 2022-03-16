@@ -40,9 +40,10 @@ public class MetodosAhorcado {
 
             if (verPalabras(palabraJuego, jugadores)) {
                 JOptionPane.showMessageDialog(null, "Has acertado la palabra.");
-                break;
-            } else
+                MetodosAhorcado.repetir();
+            } else {
                 MetodosAhorcado.averiguar(palabraJuego, jugadores);
+            }
         }
     }
 
@@ -51,20 +52,22 @@ public class MetodosAhorcado {
                 YES_NO_OPTION, QUESTION_MESSAGE, null, new Object[]{"Si", "No"}, null);
 
         switch (op) {
-            case 0 :
-            String palabra = lerDatos.lerString("Introduce la palabra: ");
-            if (palabraJuego.equals(palabra)) {
-                JOptionPane.showMessageDialog(null, "Has acertado la palabra.");
+            case 0:
+                String palabra = lerDatos.lerString("Introduce la palabra: ");
+                if (palabraJuego.equals(palabra)) {
+                    JOptionPane.showMessageDialog(null, "Has acertado la palabra.");
 
-                MetodosAhorcado.repetir();
-            } else
-                JOptionPane.showMessageDialog(null, "La palabra no es correcta.");
-            case 1 :
+                    MetodosAhorcado.repetir();
+                } else {
+                    JOptionPane.showMessageDialog(null, "La palabra no es correcta.");
+                }
+            case 1:
                 break;
 
         }
 
     }
+
     public static boolean jugando(String palabraJuego, List<Character> jugadores) {
 
         String letra = lerDatos.lerString("Introduce unha letra: ");
@@ -100,7 +103,7 @@ public class MetodosAhorcado {
         Random rand = new Random();
         String palabraJuego = palabras.get(rand.nextInt(palabras.size()));
 
-          System.out.println(palabraJuego);
+        System.out.println(palabraJuego);
         List<Character> jugadores = new ArrayList<>();
 
         System.out.println();
@@ -124,9 +127,9 @@ public class MetodosAhorcado {
 
             if (verPalabras(palabraJuego, jugadores)) {
                 JOptionPane.showMessageDialog(null, "Has acertado la palabra.");
-            } else
+            } else {
                 MetodosAhorcado.averiguar(palabraJuego, jugadores);
-
+            }
 
         }
     }
@@ -162,20 +165,22 @@ public class MetodosAhorcado {
 
             if (verPalabras(palabraJuego, jugadores)) {
                 JOptionPane.showMessageDialog(null, "Has acertado la palabra.");
-            } else
-            MetodosAhorcado.averiguar(palabraJuego, jugadores);
+            } else {
+                MetodosAhorcado.averiguar(palabraJuego, jugadores);
+            }
 
         }
     }
+
     public static void repetir() {
-        int op=0;
+        int op = 0;
         try {
             op = Integer.parseInt(JOptionPane.showInputDialog("      "
                     + "     **** MENU ****"
                     + "\n1 --> Empezar partida" + "\n2 --> Elegir dificultad" + "\n3 --> Salir"));
             switch (op) {
                 case 1:
-                       MetodosAhorcado.partida();
+                    MetodosAhorcado.partida();
                     break;
                 case 2:
                     elegirDificultad();
@@ -186,7 +191,7 @@ public class MetodosAhorcado {
         }
     }
 
-    public static void elegirDificultad(){
+    public static void elegirDificultad() {
 
         int op;
 
@@ -212,7 +217,5 @@ public class MetodosAhorcado {
         }
     }
 
+}
 
-
-
-    }
